@@ -1,0 +1,41 @@
+-- tabs/sea_events.lua
+-- Sea Event farming UI: Leviathan, Terrorshark, Seabeasts
+
+local Tabs = getgenv().BF_Hub.Tabs
+local Core = getgenv().BF_Hub.Core
+local SeaTab = Tabs.SeaEvents
+
+-- Main Toggles
+SeaTab:Toggle("🌊 Auto Sea Beast Farm", false, function(val)
+    Core.Settings.AutoSeaBeasts = val
+end)
+
+SeaTab:Toggle("🦈 Auto Farm Terrorshark", false, function(val)
+    Core.Settings.AutoTerrorshark = val
+end)
+
+SeaTab:Toggle("🐉 Auto Farm Leviathan", false, function(val)
+    Core.Settings.AutoLevi = val
+end)
+
+SeaTab:Toggle("🔁 Auto Retry on Death (Levi)", true, function(val)
+    Core.Settings.AutoRetryLevi = val
+end)
+
+SeaTab:Toggle("🛡️ Shark Anchor Safe Mode (No Death)", true, function(val)
+    Core.Settings.SharkAnchorSafe = val
+end)
+
+SeaTab:Toggle("🎁 Auto Collect Sea Drops (Tooth, Embers)", true, function(val)
+    Core.Settings.CollectSeaDrops = val
+end)
+
+SeaTab:Toggle("🚤 Auto Use Boat + Navigation", false, function(val)
+    Core.Settings.AutoSeaBoat = val
+end)
+
+SeaTab:Toggle("⚙️ Auto Equip Best Gear for Sea Events", true, function(val)
+    Core.Settings.SeaEquipGear = val
+end)
+
+SeaTab:Label("Includes safe logic + auto collect drops ✅")
