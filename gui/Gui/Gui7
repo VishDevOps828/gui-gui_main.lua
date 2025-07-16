@@ -1,0 +1,48 @@
+-- tabs/race.lua
+-- Handles V2/V3 unlocking, V4 moon logic, temple, trials
+
+local Tabs = getgenv().BF_Hub.Tabs
+local Core = getgenv().BF_Hub.Core
+local RaceTab = Tabs.Race
+
+-- Auto Unlocks
+RaceTab:Toggle("🧪 Auto Unlock Race V2", false, function(val)
+    Core.Settings.AutoRaceV2 = val
+end)
+
+RaceTab:Toggle("⚗️ Auto Unlock Race V3", false, function(val)
+    Core.Settings.AutoRaceV3 = val
+end)
+
+RaceTab:Toggle("🔄 Auto Turn On Race V3 Every Time", true, function(val)
+    Core.Settings.AutoEnableV3 = val
+end)
+
+-- V4 Logic
+RaceTab:Label("🌕 Race V4: Mirage & Moon Logic")
+
+RaceTab:Toggle("🔭 Auto Detect Full Moon", true, function(val)
+    Core.Settings.AutoDetectMoon = val
+end)
+
+RaceTab:Toggle("👁️ Auto Look at Moon (Mirage)", true, function(val)
+    Core.Settings.LookAtMoon = val
+end)
+
+RaceTab:Toggle("🛕 Auto Teleport to Temple", false, function(val)
+    Core.Settings.AutoTemple = val
+end)
+
+RaceTab:Toggle("🌀 Auto Enter V4 Trial", false, function(val)
+    Core.Settings.AutoTrial = val
+end)
+
+RaceTab:Toggle("♻️ Auto Retry Trial if Failed", true, function(val)
+    Core.Settings.AutoTrialRetry = val
+end)
+
+RaceTab:Toggle("🏁 Auto Complete All V4 Trials", false, function(val)
+    Core.Settings.CompleteAllTrials = val
+end)
+
+RaceTab:Label("Works with Mirage Finder + Moonwatch logic")
