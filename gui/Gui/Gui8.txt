@@ -1,0 +1,52 @@
+-- tabs/cdk_soulguitar.lua
+-- Handles CDK & Soul Guitar puzzles, drops, and fights
+
+local Tabs = getgenv().BF_Hub.Tabs
+local Core = getgenv().BF_Hub.Core
+local CDKTab = Tabs.CDK
+
+-- CDK Section
+CDKTab:Label("🗡️ Dark Dagger / CDK Puzzle")
+
+CDKTab:Toggle("🧩 Auto Complete CDK Puzzle", false, function(val)
+    Core.Settings.AutoCDK = val
+end)
+
+CDKTab:Toggle("💀 Auto Collect Skulls", false, function(val)
+    Core.Settings.AutoCDKSkulls = val
+end)
+
+CDKTab:Toggle("🎛️ Auto Pull CDK Lever", true, function(val)
+    Core.Settings.AutoCDKLever = val
+end)
+
+CDKTab:Toggle("⚔️ Auto CDK Final Boss Fight", false, function(val)
+    Core.Settings.AutoCDKBoss = val
+end)
+
+CDKTab:Toggle("🗡️ Auto Equip CDK on Unlock", true, function(val)
+    Core.Settings.AutoEquipCDK = val
+end)
+
+-- Soul Guitar Section
+CDKTab:Label("🎸 Soul Guitar Puzzle")
+
+CDKTab:Toggle("🎵 Auto Solve Music Puzzle", false, function(val)
+    Core.Settings.AutoGuitarMusic = val
+end)
+
+CDKTab:Toggle("📯 Auto Activate Levers", false, function(val)
+    Core.Settings.AutoGuitarLevers = val
+end)
+
+CDKTab:Toggle("👻 Auto Ghost Room Logic", false, function(val)
+    Core.Settings.AutoGuitarGhost = val
+end)
+
+CDKTab:Toggle("💀 Auto Soul Guitar Final Boss", false, function(val)
+    Core.Settings.AutoGuitarBoss = val
+end)
+
+CDKTab:Toggle("🎸 Auto Equip Soul Guitar", true, function(val)
+    Core.Settings.AutoEquipGuitar = val
+end)

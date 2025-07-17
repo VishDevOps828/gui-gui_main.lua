@@ -1,0 +1,42 @@
+-- tabs/quests.lua
+-- Quest handling: auto grab, chain quests, special raids
+
+local Tabs = getgenv().BF_Hub.Tabs
+local Core = getgenv().BF_Hub.Core
+local QuestTab = Tabs.Quests
+
+-- General Quest Farming
+QuestTab:Toggle("📜 Auto Grab Quest", true, function(val)
+    Core.Settings.AutoGrabQuest = val
+end)
+
+QuestTab:Toggle("✅ Auto Complete Quest", true, function(val)
+    Core.Settings.AutoCompleteQuest = val
+end)
+
+-- Special Quest Chains
+QuestTab:Label("🌀 Special Quest Chains")
+
+QuestTab:Toggle("🏭 Auto Factory Raid", false, function(val)
+    Core.Settings.AutoFactoryRaid = val
+end)
+
+QuestTab:Toggle("🔥 Auto Pirate Raid", false, function(val)
+    Core.Settings.AutoPirateRaid = val
+end)
+
+QuestTab:Toggle("🧩 Auto TTK Puzzle Quests", false, function(val)
+    Core.Settings.AutoTTK = val
+end)
+
+QuestTab:Toggle("💀 Auto CDK Trials", false, function(val)
+    Core.Settings.AutoCDKTrials = val
+end)
+
+-- Cooldown Skipping
+QuestTab:Toggle("⏲️ Bypass Quest Cooldowns", false, function(val)
+    Core.Settings.SkipQuestCooldowns = val
+end)
+
+-- Info
+QuestTab:Label("Auto starts chain and raid quests when active.")

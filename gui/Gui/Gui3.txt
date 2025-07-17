@@ -1,0 +1,49 @@
+-- tabs/bosses.lua
+-- Boss kill logic UI: Normal, Elite, Special
+
+local Tabs = getgenv().BF_Hub.Tabs
+local Core = getgenv().BF_Hub.Core
+local BossTab = Tabs.Bosses
+
+-- Normal Bosses
+BossTab:Toggle("👑 Auto Kill All Bosses", false, function(val)
+    Core.Settings.AutoKillBosses = val
+end)
+
+-- Elite Bosses
+BossTab:Toggle("🔥 Auto Kill Elite Bosses (Urban, Diablo, Deandre)", false, function(val)
+    Core.Settings.AutoKillElites = val
+end)
+
+-- CDK Bosses
+BossTab:Toggle("⚔️ Auto Kill CDK Puzzle Bosses", false, function(val)
+    Core.Settings.AutoKillCDK = val
+end)
+
+-- Special Bosses
+BossTab:Label("⚡ Special Bosses")
+
+BossTab:Toggle("💀 Auto Kill RIP Indra", false, function(val)
+    Core.Settings.AutoKillIndra = val
+end)
+
+BossTab:Toggle("🌩️ Auto Kill Wrath of Ra", false, function(val)
+    Core.Settings.AutoKillRa = val
+end)
+
+BossTab:Toggle("🎸 Auto Kill Soul Guitar Final Boss", false, function(val)
+    Core.Settings.AutoKillGuitarBoss = val
+end)
+
+BossTab:Toggle("🐉 Auto Leviathan (with Retry)", false, function(val)
+    Core.Settings.AutoKillLevi = val
+end)
+
+-- Utility
+BossTab:Toggle("🛡️ Safe Mode (Don't Die)", true, function(val)
+    Core.Settings.SafeBossMode = val
+end)
+
+BossTab:Toggle("⚙️ Auto Equip Best Weapon", true, function(val)
+    Core.Settings.AutoEquipOnBoss = val
+end)

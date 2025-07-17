@@ -1,0 +1,53 @@
+-- tabs/pvp.lua
+-- PvP features including combo builder and anti-ban logic
+
+local Tabs = getgenv().BF_Hub.Tabs
+local Core = getgenv().BF_Hub.Core
+local PvPTab = Tabs.PvP
+
+-- PvP Mode
+PvPTab:Toggle("🔪 Auto PvP (Nearest Player)", false, function(val)
+    Core.Settings.AutoPvP = val
+end)
+
+PvPTab:Toggle("🎯 Lock On Target (Silent Aim)", true, function(val)
+    Core.Settings.LockOn = val
+end)
+
+PvPTab:Toggle("🛡️ Anti-Ban PvP Mode", true, function(val)
+    Core.Settings.AntiBanPvP = val
+end)
+
+PvPTab:Toggle("👁️ Auto Ken Evasion", true, function(val)
+    Core.Settings.AutoKen = val
+end)
+
+PvPTab:Toggle("💨 Auto Dash + Combo Finish", false, function(val)
+    Core.Settings.AutoDash = val
+end)
+
+PvPTab:Slider("PvP Range", 50, 500, 200, function(val)
+    Core.Settings.PvPRange = val
+end)
+
+-- PvP Combo Builder System (simplified UI)
+PvPTab:Label("🧠 PvP Combo Builder")
+
+PvPTab:Dropdown("Choose Main Weapon", {"Dough", "Dragon", "Godhuman", "Guitar", "Magma", "Dark Blade"}, function(val)
+    Core.Settings.PvPWeapon = val
+end)
+
+PvPTab:Textbox("Custom Combo (e.g. Z-X-C-V)", true, function(val)
+    Core.Settings.CustomCombo = val
+end)
+
+PvPTab:Button("Save Combo", function()
+    Core:Notify("Combo saved: " .. tostring(Core.Settings.CustomCombo))
+end)
+
+PvPTab:Button("Execute PvP Combo", function()
+    -- Will run in feature/pvp_combo_builder.lua
+    Core.Settings.ExecuteComboNow = true
+end)
+
+-- PvP tools done

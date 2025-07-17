@@ -1,0 +1,23 @@
+-- main.lua
+-- Master Loader for Blox Fruits Master Hub
+
+repeat wait() until game:IsLoaded()
+
+local function LoadGitHubModule(path)
+    local success, result = pcall(function()
+        return loadstring(game:HttpGet("https://raw.githubusercontent.com/VishDevOps828/BloxFruitHub/main/" .. path))()
+    end)
+    if not success then
+        warn("[Hub] Failed to load module: " .. path)
+    end
+end
+
+-- Init Core
+LoadGitHubModule("core/init.lua")
+
+-- GUI Tabs
+LoadGitHubModule("gui/gui_main.lua")
+LoadGitHubModule("gui/gui_load.lua")
+
+-- Done
+print("[Master Hub] Loaded all modules successfully ✅")

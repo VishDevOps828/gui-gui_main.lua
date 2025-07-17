@@ -1,0 +1,42 @@
+-- tabs/trade.lua
+-- Handles auto trading, freeze, scam, and alerts
+
+local Tabs = getgenv().BF_Hub.Tabs
+local Core = getgenv().BF_Hub.Core
+local TradeTab = Tabs.Trade
+
+-- Auto Trade System
+TradeTab:Toggle("🔁 Auto Accept Trades", false, function(val)
+    Core.Settings.AutoTrade = val
+end)
+
+TradeTab:Toggle("📦 Auto Queue Trade Offers", false, function(val)
+    Core.Settings.AutoTradeQueue = val
+end)
+
+-- Freeze Trade
+TradeTab:Toggle("❄️ Freeze Trade Window (client-only)", false, function(val)
+    Core.Settings.TradeFreeze = val
+end)
+
+-- Scam Trade (visual only)
+TradeTab:Toggle("💀 Enable Scam Trade Tool", false, function(val)
+    Core.Settings.ScamTrade = val
+end)
+
+TradeTab:Label("⚠️ Client-side only! Doesn’t affect actual trade server")
+
+-- Auto Exit Trade
+TradeTab:Toggle("🚪 Auto Close Trade After Offer", false, function(val)
+    Core.Settings.AutoExitTrade = val
+end)
+
+-- Trade Notifications
+TradeTab:Toggle("🔔 Notify on Trade Received", true, function(val)
+    Core.Settings.TradeNotifications = val
+end)
+
+-- Trade Chat Log
+TradeTab:Toggle("📜 Log Trade Chat", false, function(val)
+    Core.Settings.LogTradeChat = val
+end)
