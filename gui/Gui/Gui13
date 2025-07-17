@@ -1,0 +1,27 @@
+-- gui/gui_load.lua
+-- Loads tab content from modules after GUI is built
+
+local Tabs = getgenv().BF_Hub.Tabs or {}
+local Core = getgenv().BF_Hub.Core
+
+-- Utility to load a tab file and attach its UI
+local function LoadTab(path)
+    local success, result = pcall(function()
+        return loadstring(game:HttpGet("https://raw.githubusercontent.com/VishDevOps828/BloxFruitHub/main/" .. path))()
+    end)
+    if not success then
+        Core:Print("❌ Failed to load tab: " .. path)
+    end
+end
+
+-- Load each tab module (UI buttons and features)
+LoadTab("tabs/farming.lua")
+LoadTab("tabs/pvp.lua")
+LoadTab("tabs/bosses.lua")
+LoadTab("tabs/sea_events.lua")
+LoadTab("tabs/quests.lua")
+LoadTab("tabs/teleport.lua")
+LoadTab("tabs/trade.lua")
+LoadTab("tabs/race.lua")
+LoadTab("tabs/cdk_soulguitar.lua")
+LoadTab("tabs/settings.lua")
