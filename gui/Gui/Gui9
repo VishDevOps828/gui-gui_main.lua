@@ -1,0 +1,52 @@
+-- tabs/settings.lua
+-- General utility settings, GUI toggles, anti-ban, credits
+
+local Tabs = getgenv().BF_Hub.Tabs
+local Core = getgenv().BF_Hub.Core
+local SettingsTab = Tabs.Settings
+
+-- Anti-Ban Settings
+SettingsTab:Label("🛡️ Anti-Ban")
+
+SettingsTab:Toggle("⚔️ Anti-Ban PvP Mode", true, function(val)
+    Core.Settings.AntiBanPvP = val
+end)
+
+SettingsTab:Toggle("🌊 Anti-Ban PvE Mode (Sea/Boss)", true, function(val)
+    Core.Settings.AntiBanPvE = val
+end)
+
+-- Safe Modes
+SettingsTab:Label("🔐 Safety")
+
+SettingsTab:Toggle("☑️ Safe Mode (All)", true, function(val)
+    Core.Settings.SafeMode = val
+end)
+
+SettingsTab:Toggle("🧍 Anti AFK", true, function(val)
+    Core.Settings.AntiAFK = val
+end)
+
+-- Server Hop
+SettingsTab:Toggle("🔄 Server Hop on Fail (Sea/Boss)", false, function(val)
+    Core.Settings.ServerHopOnFail = val
+end)
+
+-- GUI
+SettingsTab:Label("🎛️ GUI Control")
+
+SettingsTab:Dropdown("GUI Keybind", {"RightShift", "LeftAlt", "F"}, function(val)
+    Core.Settings.GUIBind = val
+end)
+
+SettingsTab:Button("🔁 Reload GUI", function()
+    Core.Settings.ReloadGUI = true
+end)
+
+SettingsTab:Button("❌ Unload Script", function()
+    Core.Settings.UnloadNow = true
+end)
+
+-- Info
+SettingsTab:Label("⚙️ Master Hub | Built by Vish + GPT")
+SettingsTab:Label("📦 Version: 1.0 | Auto-Update Enabled")
