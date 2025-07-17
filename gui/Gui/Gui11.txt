@@ -1,0 +1,36 @@
+-- core/init.lua
+-- Initialize important base settings
+
+if not getgenv().BF_Hub then
+    getgenv().BF_Hub = {}
+end
+
+local Core = {}
+
+-- Basic Settings
+Core.Settings = {
+    AutoFarm = false,
+    AutoHaki = true,
+    UseTween = false,
+    SafeMode = true,
+    ServerHopOnFail = true,
+    AntiAFK = true
+}
+
+-- Utility Functions
+function Core:Print(message)
+    print("[MasterHub]: " .. tostring(message))
+end
+
+function Core:Notify(text, duration)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Master Hub",
+        Text = text,
+        Duration = duration or 3
+    })
+end
+
+-- Save to global
+getgenv().BF_Hub.Core = Core
+
+return Core

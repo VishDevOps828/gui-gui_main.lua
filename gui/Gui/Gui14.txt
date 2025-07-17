@@ -1,0 +1,59 @@
+-- tabs/teleport.lua
+-- Handles teleporting to locations, chests, Mirage, players
+
+local Tabs = getgenv().BF_Hub.Tabs
+local Core = getgenv().BF_Hub.Core
+local TeleportTab = Tabs.Teleport
+
+-- Chest Teleport
+TeleportTab:Toggle("💰 Auto Tween to Chests", false, function(val)
+    Core.Settings.TweenChests = val
+end)
+
+-- Island TP
+TeleportTab:Label("🏝️ Island Teleport")
+
+TeleportTab:Dropdown("Teleport to Island", {
+    "Starter Island",
+    "Middle Town",
+    "Jungle",
+    "Skylands",
+    "Marine Fortress",
+    "Cafe",
+    "Colosseum",
+    "Hot and Cold",
+    "Green Zone",
+    "Forgotten Island",
+    "Haunted Castle",
+    "Hydra Island",
+    "Great Tree",
+    "Castle on the Sea",
+    "Tiki Outpost",
+    "Mirage Island"
+}, function(selected)
+    Core.Settings.TeleportIsland = selected
+    Core.Settings.DoIslandTeleport = true
+end)
+
+-- Temple
+TeleportTab:Button("🧬 Go to Race Temple", function()
+    Core.Settings.TeleportTemple = true
+end)
+
+-- Player Follow
+TeleportTab:Textbox("👤 Teleport to Player Name", true, function(val)
+    Core.Settings.TeleportToPlayer = val
+end)
+
+TeleportTab:Button("Follow Player", function()
+    Core.Settings.FollowPlayerNow = true
+end)
+
+-- Custom Coordinates
+TeleportTab:Textbox("📍 Custom Coordinates (x,y,z)", true, function(val)
+    Core.Settings.CustomCoords = val
+end)
+
+TeleportTab:Button("Teleport to Coordinates", function()
+    Core.Settings.TeleportCoordsNow = true
+end)
